@@ -1,0 +1,95 @@
+/* General body and fonts */
+body {
+    background-color: #1E1E1E;
+    color: #EAEAEA;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+/* Navbar Customizations */
+.navbar {
+    background-color: #2A2A2A;
+}
+
+/* Navbar text buttons */
+.nav-link.btn-style {
+    color: #EAEAEA;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link.btn-style:hover {
+    background-color: #444444;
+    color: #03FFC4 !important;
+}
+
+.mx-auto {
+    justify-content: center;
+}
+
+/* Space between search and nav links */
+.navbar-nav {
+    padding-left: 20px;
+}
+
+/* Custom Search Button */
+.btn-outline-cyan {
+    border-color: #03FFC4;
+    color: #03FFC4;
+}
+
+.btn-outline-cyan:hover {
+    background-color: #03FFC4;
+    color: #1E1E1E;
+}
+
+/* Main content padding */
+.content-area {
+    padding: 0 40px;
+}
+
+/* Featured Section */
+.featured img {
+    border-radius: 8px;
+}
+
+.featured h5 {
+    color: #EAEAEA;
+}
+
+.featured p {
+    color: #B0B0B0;
+}
+
+/* Text Colors for Sections */
+.text-cyan {
+    color: #03FFC4;
+}
+
+/* Footer Customization */
+.footer-area {
+    padding: 0 40px;
+}
+
+footer {
+    background-color: #2A2A2A;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #03FFC4;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Kalam font for "Cinemite" */
+.site-name {
+    font-family: 'Kalam', cursive;
+    color: #FF033E;
+}

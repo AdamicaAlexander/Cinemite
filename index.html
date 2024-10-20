@@ -2,9 +2,135 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemite - Movie & TV Show Database</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark-theme">
+
+<!-- Main Container -->
+<div class="container">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.png" alt="Cinemite" width="50" height="50">
+                <span class="site-name">Cinemite</span>
+            </a>
+
+            <div class="mx-auto d-flex align-items-center">
+                <!-- Search Bar -->
+                <form class="d-flex me-5">
+                    <input class="form-control me-2 search-bar" type="search" placeholder="Search..." aria-label="Search">
+                    <button class="btn btn-outline-cyan" type="submit">Search</button>
+                </form>
+
+                <!-- Navbar Links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn-style" href="#">Movie List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-style" href="#">TV Show List</a>
+                    </li>
+
+                    <!-- Browse Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn-style" href="#" id="browseDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Browse
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="browseDropdown">
+                            <li><a class="dropdown-item" href="#">Movies</a></li>
+                            <li><a class="dropdown-item" href="#">Top 100</a></li>
+                            <li><a class="dropdown-item" href="#">Trending</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">TV Shows</a></li>
+                            <li><a class="dropdown-item" href="#">Top 100</a></li>
+                            <li><a class="dropdown-item" href="#">Trending</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Profile Icon Dropdown -->
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="assets/profile-icon.png" alt="Profile" width="30" height="30">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Notifications</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Log In/Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Body -->
+    <div class="content-area mt-5">
+
+        <!-- Featured Section -->
+        <section class="featured">
+            <h2 class="text-cyan">Featured</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="featured-item">
+                        <img src="assets/featured1.jpg" class="img-fluid" alt="Featured Content 1">
+                        <div class="featured-text">
+                            <h5>Interstellar</h5>
+                            <p>When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="featured-item">
+                        <img src="assets/featured2.jpg" class="img-fluid" alt="Featured Content 2">
+                        <div class="featured-text">
+                            <h5>Rick and morty</h5>
+                            <p>The fractured domestic lives of a nihilistic mad scientist and his anxious grandson are further complicated by their inter-dimensional misadventures</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- From Watchlist (later functionality) -->
+        <section class="watchlist mt-5">
+            <h2 class="text-cyan">From Your Watchlist</h2>
+            <p>TV Shows you're currently watching and upcoming movies (functionality coming soon).</p>
+        </section>
+
+        <!-- Activity (later functionality) -->
+        <section class="activity mt-5">
+            <h2 class="text-cyan">Your Latest Activity</h2>
+            <p>Recent activity (functionality coming soon).</p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-light mt-5">
+        <div class="d-flex justify-content-between py-3 footer-area">
+            <p><span class="site-name">Cinemite</span> 2024 &copy; All rights reserved.</p>
+            <div>
+                <a href="about.html" class="text-cyan me-3">About</a>
+                <a href="contact.html" class="text-cyan">Contact</a>
+            </div>
+        </div>
+    </footer>
+</div>
 
 </body>
 </html>
