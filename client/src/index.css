@@ -1,0 +1,207 @@
+/* Global Variables */
+:root {
+    --bg-primary: #1E1E1E;
+    --bg-secondary: #2A2A2A;
+    --bg-tertiary: #444444;
+    --text-secondary: #A9A9A9;
+    --accent-color: #03FFC4;
+    --trademark-red: #FF033E;
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'Kalam';
+    src: url('../public/assets/kalam-regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Basic Elements */
+main {
+    background-color: var(--bg-primary);
+    color: white;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.text-gray {
+    color: var(--text-secondary);
+}
+
+.text-cyan {
+    color: var(--accent-color);
+}
+
+.secondary-bg {
+    background-color: var(--bg-secondary);
+}
+
+.tertiary-border {
+    border: 1px solid var(--bg-tertiary);
+}
+
+/* Buttons */
+.btn-outline-cyan {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--bg-primary);
+}
+
+.btn-outline-cyan:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Forms and Inputs */
+.text-bar-dark {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
+    color: var(--text-secondary);
+    padding: 10px;
+}
+
+.text-bar-dark:focus {
+    background-color: var(--bg-tertiary);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+.text-bar-dark::placeholder {
+    color: var(--text-secondary);
+}
+
+.dropdown-menu,
+.form-check-input {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
+}
+
+.form-check-input:focus {
+    border-color: var(--accent-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%232A2A2A'%3e%3cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3e%3c/svg%3e") !important;
+}
+
+/* Links */
+.nav-link.btn-style,
+.dropdown-toggle,
+.dropdown-item {
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link.btn-style:hover,
+.dropdown-toggle:hover,
+.dropdown-item:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--accent-color);
+}
+
+.nav-link.btn-style,
+.dropdown-toggle,
+.nav-link.btn-style:hover,
+.dropdown-toggle:hover {
+    border-radius: 5px;
+}
+
+/* Containers and Spacing */
+.container {
+    max-width: 1140px;
+}
+
+.content-area {
+    padding: 0 40px;
+}
+
+/* Footer */
+footer p,
+footer a {
+    margin: 0;
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Featured Section */
+.featured-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.featured-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: brightness(50%);
+    aspect-ratio: 16 / 10;
+}
+
+.featured-text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.featured-text h5 {
+    font-size: 1.8rem;
+}
+
+/* Accordion */
+.accordion-item {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
+    color: white;
+}
+
+.accordion-button {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--bg-tertiary);
+    color: white;
+    border: none;
+    box-shadow: none;
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23A9A9A9'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+/* Navbar */
+.dropdown-divider {
+    border-top: 1px solid var(--bg-tertiary);
+}
+
+.navbar-nav {
+    padding-left: 40px;
+}
+
+/* Site Branding */
+.site-name {
+    font-family: 'Kalam', cursive;
+    color: var(--trademark-red);
+}
+
+/* Login Section */
+.login-section {
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 10px;
+}
