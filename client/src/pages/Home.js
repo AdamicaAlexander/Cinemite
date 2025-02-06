@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 
 const Home = () => {
     return (
@@ -13,7 +13,7 @@ const Home = () => {
                             <Card.Img src="/assets/featured1.jpg" className="featured-img img-fluid" alt="Featured Content 1"/>
                             <Card.Body className="featured-text">
                                 <Card.Title>Interstellar</Card.Title>
-                                <Card.Text>When Earth becomes uninhabitable, an ex-NASA pilot, Joseph Cooper, pilots a spacecraft to find a new home for humanity.</Card.Text>
+                                <Card.Text className="text-white">When Earth becomes uninhabitable, an ex-NASA pilot, Joseph Cooper, pilots a spacecraft to find a new home for humanity.</Card.Text>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -23,7 +23,7 @@ const Home = () => {
                             <Card.Img src="/assets/featured2.jpg" className="featured-img img-fluid" alt="Featured Content 2"/>
                             <Card.Body className="featured-text">
                                 <Card.Title>Rick and Morty</Card.Title>
-                                <Card.Text>The domestic life of a mad scientist and his anxious grandson, combined with their wild inter-dimensional adventures.</Card.Text>
+                                <Card.Text className="text-white">The domestic life of a mad scientist and his anxious grandson, combined with their wild inter-dimensional adventures.</Card.Text>
                             </Card.Body>
                         </Card>
                     </Col>

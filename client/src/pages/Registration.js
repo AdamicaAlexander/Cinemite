@@ -1,41 +1,51 @@
 import React, { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
+import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
+
 import api from '../utils/axiosConfig';
 import { registrationValidationSchema } from '../utils/formValidation';
 
 const Registration = () => {
-    const [registrationError, setRegistrationError] = useState('');
     const navigate = useNavigate();
+
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertVariant, setAlertVariant] = useState('success');
 
     const handleSubmit = async (values, { setSubmitting }) => {
         try {
-            setRegistrationError('');
             const { confirmPassword, ...submitData } = values;
 
             const response = await api.post('/auth/registration', submitData);
 
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('user', JSON.stringify(response.data.user));
+            setAlertMessage('Registration successful!');
+            setAlertVariant('success');
 
-            navigate('/');
+            setTimeout(() => {
+                navigate('/login');
+            }, 1500);
         } catch (error) {
-            setRegistrationError(
+            setAlertMessage(
                 error.response?.data?.message || 'Registration failed. Please try again.'
             );
+            setAlertVariant('danger');
         } finally {
             setSubmitting(false);
         }
     };
 
     return (
-        <div className="container content-area mt-5">
-            <div className="row justify-content-center">
-                <div className="col-md-6">
-                    <div className="registration-section">
+        <Container className="content-area mt-5">
+            <Row className="justify-content-center">
+                <Col md={6}>
+                    <div className="entry-section">
                         <h1 className="text-cyan text-center mb-4">Sign Up</h1>
 
-                        {registrationError && (<div className="alert alert-danger" role="alert">{registrationError}</div>)}
+                        {alertMessage && (
+                            <div style={{position: 'fixed', top: '1rem', right: '1rem', zIndex: 9999, width: '300px'}}>
+                                <Alert variant={alertVariant} dismissible onClose={() => setAlertMessage('')} className="mb-0">{alertMessage}</Alert>
+                            </div>
+                        )}
 
                         <Formik
                             initialValues={{username: '', email: '', password: '', confirmPassword: ''}}
@@ -43,37 +53,35 @@ const Registration = () => {
                             onSubmit={handleSubmit}
                         >
                             {({ isSubmitting, errors, touched }) => (
-                                <Form className="registration-form">
-                                    <div className="mb-3">
-                                        <label htmlFor="username" className="form-label">Username</label>
+                                <FormikForm className="registration-form">
+                                    <Form.Group className="mb-3" controlId="username">
+                                        <Form.Label>Username</Form.Label>
                                         <Field type="text" name="username" className={`form-control text-bar-dark ${touched.username && errors.username ? 'is-invalid' : ''}`} placeholder="Choose a username"/>
                                         <ErrorMessage name="username" component="div" className="invalid-feedback"/>
-                                    </div>
+                                    </Form.Group>
 
-                                    <div className="mb-3">
-                                        <label htmlFor="email" className="form-label">Email</label>
+                                    <Form.Group className="mb-3" controlId="email">
+                                        <Form.Label>Email</Form.Label>
                                         <Field type="email" name="email" className={`form-control text-bar-dark ${touched.email && errors.email ? 'is-invalid' : ''}`} placeholder="Enter your email"/>
                                         <ErrorMessage name="email" component="div" className="invalid-feedback"/>
-                                    </div>
+                                    </Form.Group>
 
-                                    <div className="mb-3">
-                                        <label htmlFor="password" className="form-label">Password</label>
+                                    <Form.Group className="mb-3" controlId="password">
+                                        <Form.Label>Password</Form.Label>
                                         <Field type="password" name="password" className={`form-control text-bar-dark ${touched.password && errors.password ? 'is-invalid' : ''}`} placeholder="Create a password"/>
                                         <ErrorMessage name="password" component="div" className="invalid-feedback"/>
-                                    </div>
+                                    </Form.Group>
 
-                                    <div className="mb-3">
-                                        <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+                                    <Form.Group className="mb-3" controlId="confirmPassword">
+                                        <Form.Label>Confirm Password</Form.Label>
                                         <Field type="password" name="confirmPassword" className={`form-control text-bar-dark ${touched.confirmPassword && errors.confirmPassword ? 'is-invalid' : ''}`} placeholder="Confirm your password"/>
                                         <ErrorMessage name="confirmPassword" component="div" className="invalid-feedback"/>
-                                    </div>
+                                    </Form.Group>
 
                                     <div className="d-grid gap-2">
-                                        <button type="submit" className="btn btn-outline-cyan" disabled={isSubmitting}>
-                                            {isSubmitting ? 'Signing Up...' : 'Sign Up'}
-                                        </button>
+                                        <Button type="submit" variant="outline-cyan" disabled={isSubmitting}>{isSubmitting ? 'Signing Up...' : 'Sign Up'}</Button>
                                     </div>
-                                </Form>
+                                </FormikForm>
                             )}
                         </Formik>
 
@@ -81,9 +89,9 @@ const Registration = () => {
                             <p>Already have an account? <Link className="text-cyan" to="/login">Log In</Link></p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 

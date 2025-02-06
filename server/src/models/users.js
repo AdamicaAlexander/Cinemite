@@ -18,6 +18,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    profilePictureUrl: {
+        type: String,
+        default: '/assets/profile-icon.png',
+    },
+    description: {
+        type: String,
+        default: '',
+    },
     created_at: {
         type: Date,
         default: Date.now,

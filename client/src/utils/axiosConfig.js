@@ -9,7 +9,10 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-        const token = localStorage.getItem('token');
+        let token = localStorage.getItem('token');
+        if (!token) {
+            token = sessionStorage.getItem('token');
+        }
         if (token) {
             config.headers['Authorization'] = `Bearer ${token}`;
         }
@@ -25,9 +28,12 @@ api.interceptors.response.use((response) => response, (error) => {
         if (error.response) {
             switch (error.response.status) {
                 case 401: // Unauthorized
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('user');
-                    window.location.href = '/login';
+                    if (originalRequest.url.includes('/auth/login')) {
+                    } else {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        window.location.href = '/login';
+                    }
                     break;
                 case 403: // Forbidden
                     console.error('Access denied');

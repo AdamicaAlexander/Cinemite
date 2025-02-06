@@ -10,8 +10,8 @@
 
 /* Fonts */
 @font-face {
-    font-family: 'Kalam';
-    src: url('../public/assets/kalam-regular.ttf') format('truetype');
+    font-family: 'Alex Brush';
+    src: url('../public/assets/alexbrush.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -24,10 +24,12 @@ main {
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
+.card-text,
 .text-gray {
     color: var(--text-secondary);
 }
 
+.card-title,
 .text-cyan {
     color: var(--accent-color);
 }
@@ -40,17 +42,24 @@ main {
     border: 1px solid var(--bg-tertiary);
 }
 
-/* Buttons */
+/* Buttons and Alerts */
 .btn-outline-cyan {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
     color: var(--bg-primary);
 }
 
+.alert-success,
 .btn-outline-cyan:hover {
     background-color: var(--bg-secondary);
     border-color: var(--accent-color);
     color: var(--accent-color);
+}
+
+.alert-danger {
+    background-color: var(--bg-secondary);
+    border-color: red;
+    color: red;
 }
 
 /* Forms and Inputs */
@@ -149,24 +158,27 @@ footer a:hover {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    color: white;
-    font-size: 1.2rem;
 }
 
-.featured-text h5 {
-    font-size: 1.8rem;
-}
-
-/* Accordion */
+/* Modal and Accordion */
+.modal-header,
+.modal-body,
+.modal-footer,
 .accordion-item {
     background-color: var(--bg-secondary);
     border: 1px solid var(--bg-tertiary);
     color: white;
 }
 
+.modal-content,
 .accordion-button {
     background-color: var(--bg-secondary);
     color: var(--text-secondary);
+}
+
+.alert .btn-close,
+.modal-header .btn-close {
+    filter: invert(1);
 }
 
 .accordion-button:not(.collapsed) {
@@ -193,15 +205,33 @@ footer a:hover {
     padding-left: 40px;
 }
 
-/* Site Branding */
+/* Other */
 .site-name {
-    font-family: 'Kalam', cursive;
+    font-family: 'Alex Brush', cursive;
+    font-size: 1.5rem;
     color: var(--trademark-red);
 }
 
-/* Login Section */
-.login-section {
+.entry-section {
     background-color: var(--bg-secondary);
     padding: 30px;
     border-radius: 10px;
+}
+
+.poster-image {
+    aspect-ratio: 2 / 3;
+    width: 100%;
+    object-fit: cover;
+}
+
+.search-results {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
+    border-top: none;
+    position: absolute;
+    top: 100%;
+    width: 600px;
+    padding: 1rem;
+    border-radius: 0 0 5px 5px;
+    z-index: 9999;
 }

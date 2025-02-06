@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+
 import { contactValidationSchema } from '../utils/formValidation';
 
 const Contact = () => {
-    // Initial form values
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertVariant, setAlertVariant] = useState('success');
+
     const initialValues = {
         name: '',
         email: '',
@@ -12,20 +15,27 @@ const Contact = () => {
         message: ''
     };
 
-    // Handle form submission
     const handleSubmit = (values, { setSubmitting, resetForm }) => {
         console.log('Form submitted:', values);
         setTimeout(() => {
-            alert('Message sent successfully!');
-            setSubmitting(false);
+            setAlertMessage('Message sent successfully!');
+            setAlertVariant('success');
             resetForm();
+            setSubmitting(false);
         }, 400);
     };
 
     return (
         <Container className="content-area mt-5 mb-5">
             <section className="contact-section">
+
                 <h1 className="text-cyan mb-4">Contact Us</h1>
+
+                {alertMessage && (
+                    <div style={{position: 'fixed', top: '1rem', right: '1rem', zIndex: 9999, width: '300px'}}>
+                        <Alert variant={alertVariant} dismissible onClose={() => setAlertMessage('')} className="mb-0">{alertMessage}</Alert>
+                    </div>
+                )}
 
                 <Formik initialValues={initialValues} validationSchema={contactValidationSchema} onSubmit={handleSubmit}>
                     {({ isSubmitting, errors, touched }) => (
@@ -64,11 +74,11 @@ const Contact = () => {
                                             <ErrorMessage name="message" component="div" className="invalid-feedback text-danger"/>
                                         </Form.Group>
 
-                                        <Button variant="outline-cyan" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send Message'}</Button>
+                                        <Button type="submit" variant="outline-cyan" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send Message'}</Button>
                                     </div>
                                 </Col>
 
-                                {/* Contact Information (unchanged) */}
+                                {/* Contact Information */}
                                 <Col md={6}>
                                     <div className="contact-info">
                                         <h3 className="text-cyan mb-4">Get in Touch</h3>

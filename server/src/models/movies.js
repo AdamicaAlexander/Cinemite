@@ -3,14 +3,9 @@ const mongoose = require('mongoose');
 const MovieSchema = new mongoose.Schema({
     title: {
         type: String,
+        unique: true,
         required: true,
         maxlength: 255,
-    },
-    release_date: {
-        type: Date,
-    },
-    duration_minutes: {
-        type: Number,
     },
     description: {
         type: String,
@@ -20,6 +15,12 @@ const MovieSchema = new mongoose.Schema({
     },
     poster_url: {
         type: String,
+    },
+    release_date: {
+        type: Date,
+    },
+    duration_minutes: {
+        type: Number,
     },
 });
 

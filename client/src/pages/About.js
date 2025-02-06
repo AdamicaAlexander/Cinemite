@@ -1,12 +1,12 @@
 import React from 'react';
-import { Container, Row, Col, Card, Accordion } from 'react-bootstrap';
+import { Accordion, Card, Col, Container, Row } from 'react-bootstrap';
 
 const About = () => {
     return (
         <Container className="content-area mt-5 mb-5">
             {/* About Section */}
-            <section className="about-section">
-                <h1 className="text-cyan mb-4">About <span className="site-name">Cinemite</span></h1>
+            <section>
+                <h1 className="text-cyan mb-3">About <span className="site-name fs-1">Cinemite</span></h1>
 
                 <Row>
                     <Col md={8}>
@@ -43,7 +43,7 @@ const About = () => {
             <section className="faq-section mt-5">
                 <h2 className="text-cyan">Frequently Asked Questions</h2>
 
-                <Accordion defaultActiveKey="0" className="mt-3" id="faqAccordion">
+                <Accordion className="mt-3" id="faqAccordion">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>How do I create an account?</Accordion.Header>
                         <Accordion.Body>Creating an account is easy! Click on the profile icon and select 'Log In' which takes you to the login page where you can find 'Sign up'. Fill in your details and you'll be ready to start tracking your favorite movies and TV shows.</Accordion.Body>

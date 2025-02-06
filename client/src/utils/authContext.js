@@ -4,29 +4,61 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        const storedUser = localStorage.getItem('user');
+        let token = localStorage.getItem('token');
+        let storedUser = localStorage.getItem('user');
+
+        if (!token || !storedUser) {
+            token = sessionStorage.getItem('token');
+            storedUser = sessionStorage.getItem('user');
+        }
 
         if (token && storedUser) {
             setUser(JSON.parse(storedUser));
         }
+
+        setLoading(false);
     }, []);
 
-    const login = (userData, token) => {
+    const login = (userData, token, rememberMe) => {
         setUser(userData);
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(userData));
+
+        if (rememberMe) {
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(userData));
+            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('user');
+        } else {
+            sessionStorage.setItem('token', token);
+            sessionStorage.setItem('user', JSON.stringify(userData));
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+        }
     };
 
     const logout = () => {
         setUser(null);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('user');
+    };
+
+    const updateUser = (newUserData) => {
+        setUser(newUserData);
+
+        const lsToken = localStorage.getItem('token');
+        if (lsToken) {
+            localStorage.setItem('user', JSON.stringify(newUserData));
+        } else {
+            sessionStorage.setItem('user', JSON.stringify(newUserData));
+        }
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, loading, login, logout, updateUser }}>
             {children}
         </AuthContext.Provider>
     );
